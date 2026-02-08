@@ -8,18 +8,15 @@
     --pink: #FF6B9D;
     --coral: #FF8E72;
     --peach: #FFC09F;
-    --yellow: #FFE5A8;
     --lavender: #C5A3FF;
-    --mint: #A8E6CF;
     --sky: #89CFF0;
 }
 
 body {
     font-family: 'Fredoka', sans-serif;
-    background: linear-gradient(135deg, var(--peach) 0%, var(--pink) 50%, var(--lavender) 100%);
+    background: linear-gradient(135deg, var(--peach), var(--pink), var(--lavender));
     min-height: 100vh;
     overflow: hidden;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,10 +24,7 @@ body {
 
 .heart-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
     z-index: 0;
 }
@@ -43,12 +37,8 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-100px) rotate(180deg);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-100px); }
 }
 
 .question-page {
@@ -64,118 +54,68 @@ body {
     display: none;
 }
 
-.question-page h1{
+.question-page h1 {
     font-family: 'Caveat', cursive;
     font-size: clamp(50px, 10vw, 100px);
     color: white;
-    text-shadow: 4px 4px 0 px rgba(0, 0, 0, 0.1);
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
     margin-bottom: 20px;
-    line-height: 1.2;
     animation: slideDown 1s ease-out;
 }
 
 @keyframes slideDown {
-    from { opacity: 0;
-    transform: translateY(-50px);
-}
-to {
-    opacity: 1;
-    transform : translateY(0);
-}
-}
-
-.emoji-heart {
-    font-size: clamp(80 px, 15vw, 150px);
-    display: block;
-    margin: 30px 0;
-    animation: heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat{
-    0%, 100% {transform: scale(1);}
-    25% {transform: scale(1.2);}
-    50% {transform: scale(1);}
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .please-image {
     width: clamp(200px, 40vw, 350px);
-    height : auto;
-    margin: 30 px auto;
-    display : block;
+    margin: 30px auto;
+    display: block;
     border-radius: 20px;
-    box-shadow:  0 15px 40 px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     animation: fadeIn 1s ease-out 0.3s backwards;
 }
 
 .buttons-container {
     position: relative;
-    min-height: 500px;
+    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    margin-top: 40px;
 }
 
 .button {
-    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 20px 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
-}
-
-.button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255,255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%,-50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.button:hover::before {
-    width: 300px;
-    height: 300px;
 }
 
 #yesBtn {
-    background: linear-gradient(135deg, var(--pink) 0%, var(--coral) 100%);
-    padding: 25px 60px;
-    animation: fadeIn 1s ease-out 0.5s backwards;
+    background: linear-gradient(135deg, var(--pink), var(--coral));
+    font-size: 28px;
 }
 
 #yesBtn:hover {
     transform: scale(1.1);
-    box-shadow: 0 15px 40px rgba(255,107,157,0.6);
 }
 
 #noBtn {
-    background: linear-gradient(135deg,var(--lavender) 0%, var(--sky) 100%);
-    padding: 20px 50px;
+    background: linear-gradient(135deg, var(--lavender), var(--sky));
     font-size: 24px;
     position: absolute;
-    animation: fadeIn 1s ease-out 0.7s backwards;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .letter-page {
@@ -190,25 +130,12 @@ to {
 
 .letter-page.active {
     display: block;
-    animation: fadeInLetter 1.5s ease-out;
-}
-
-@keyframes fadeInLetter {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    animation: fadeIn 1.5s ease-out;
 }
 
 .roses-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+    inset: 0;
     pointer-events: none;
 }
 
@@ -216,112 +143,40 @@ to {
     position: absolute;
     font-size: 60px;
     opacity: 0.15;
-    filter: blur(1px);
 }
 
 .yay-image {
-    width: clamp(200px, 40vw, 350px);
-    height: auto;
-    margin: 0 auto 40px;
+    width: clamp(200px, 40vw, 300px);
+    margin: 0 auto 30px;
     display: block;
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
 
 .letter-container {
-    position: relative;
     max-width: 700px;
     margin: 0 auto;
-    background: rgba(255,255, 255, 0.95);
-    border-radius: 30px;
+    background: rgba(255,255,255,0.95);
     padding: 60px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    border-radius: 30px;
 }
 
 .letter-container h1 {
     font-family: 'Caveat', cursive;
-    font-size: clamp(40px, 8vw, 70px);
     color: var(--pink);
     text-align: center;
     margin-bottom: 30px;
 }
 
-.yay-image {
-    max-width: 250px;
-    width: 70%;
-    height: auto;
-    border-radius: 20px;
-    margin: 0 auto 30px auto;
-    display: block;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
 .letter-container p {
-    font-size:  clamp(18px, 3vw, 22px);
+    font-size: 20px;
     line-height: 1.8;
-    color: #555;
     margin-bottom: 20px;
-    text-align: left;
+    color: #555;
 }
 
 .signature {
     font-family: 'Caveat', cursive;
-    font-size: clamp(28px, 5vw, 40px);
+    font-size: 32px;
     color: var(--pink);
     text-align: right;
-    margin-top: 40px;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    .buttons-container {
-        flex-direction: column;
-        gap: 20px;
-        min-height: 350px;
-    }
-    
-    #yesBtn {
-        padding: 20px 50px;
-        font-size: 24px;
-    }
-
-    #noBtn {
-        padding: 18px 45px;
-        font-size : 22px;
-    }
-
-    .letter-container {
-        padding: 40px 30px;
-    }
-
-    .please-image, .yay-image {
-        width: clamp(150px, 50vw, 250px);
-    }
-}
-
-@media (max-width: 400px) {
-    .question-page {
-        padding: 20px;
-    }
-    .letter-container {
-        padding: 30px 20px;
-    }
 }
